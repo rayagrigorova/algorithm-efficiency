@@ -1,0 +1,36 @@
+1.Изведете сложността на метода на мехурчето, следвайки примерите от презентацията
+Сложността за оптимизирания bubble sort ще е същата като за неоптимизирания, защото гледаме най-лошия слуай. 
+public class BubbleSort {
+	public static void bubbleSort(int[] list) {
+		for (int k = 0; k < list.length - 1; k++) {
+			for (int i = 0; i < list.length - 1 - k; i++) {
+				if (list[i] > list[i + 1]) {
+					// Swap list[i] with list[i + 1]
+					int temp = list[i];
+					list[i] = list[i + 1];
+					list[i + 1] = temp;
+				}
+			}
+		}
+}
+
+	
+for (int k = 0; k < list.length - 1; k++) се изпълнява n - 1 пъти 
+for (int i = 0; i < list.length - 1 - k; i++) първо ще се изпълни n - 1 пъти, след това n - 2 ... 1
+Изразът
+if (list[i] > list[i + 1]) {
+	// Swap list[i] with list[i + 1]
+	int temp = list[i];
+	list[i] = list[i + 1];
+	list[i + 1] = temp;
+}
+ще отнема константно време c
+
+(n - 1)c + (n - 2)c + (n - 3)c + ... + c= 
+=c * (n - 1 + n - 2 + n - 3 + ... + 1) = 
+(n - 1 + n - 2 + n - 3 + ... + 1) е сбор на аритметична прогресия до n - 1
+S(n - 1) = ((a(1) + a(n-1))(n-1))/2
+a(1) - първи член на АП, a(n - 1) - n - 1-ви член на АП
+S(n - 1) = (1 + n - 1)(n - 1)/2
+S(n - 1) = n(n-1)/2 = n^2 - n = n ^ 2
+T(n) = O(n^2)
