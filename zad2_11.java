@@ -1,74 +1,61 @@
 package Algorithm_Efficiency;
 
-import java.util.Scanner;
 
-public class zad2_11 {
+import java.util.*;
+
+public class zad2_11{
+	private static final String ArrayList = null;
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-//		ÃÃ Ã¯Ã¨Ã¸Ã¥Ã²Ã¥ Ã¯Ã°Ã®Ã£Ã°Ã Ã¬Ã , ÃªÃ®Ã¿Ã²Ã® Ã¯Ã®Ã¤ÃªÃ Ã­Ã¢Ã 
-//		Ã¯Ã®Ã²Ã°Ã¥Ã¡Ã¨Ã²Ã¥Ã«Ã¿ Ã¤Ã  Ã¢ÃºÃ¢Ã¥Ã¤Ã¥ Ã­Ã¨Ã§ Ã¨ Ã¯Ã®ÃªÃ Ã§Ã¢Ã  
-//		Ã¬Ã ÃªÃ±Ã¨Ã¬Ã Ã«Ã­Ã® Ã­Ã Ã°Ã Ã±Ã²Ã¢Ã Ã¹Ã Ã²Ã  Ã¯Ã®Ã±Ã«Ã¥Ã¤Ã®Ã¢Ã Ã²Ã¥Ã«Ã­Ã®Ã±Ã²
-//		Ã®Ã² Ã±Ã¨Ã¬Ã¢Ã®Ã«Ã¨ (Ã­Ã¥ Ã¥ Ã§Ã Ã¤ÃºÃ«Ã¦Ã¨Ã²Ã¥Ã«Ã­Ã® Ã²Ã¥Ã§Ã¨ Ã±Ã¨Ã¬Ã¢Ã®Ã«Ã¨ Ã¤Ã 
-//		Ã±Ã  Ã­Ã¥Ã¯Ã®Ã±Ã°Ã¥Ã¤Ã±Ã²Ã¢Ã¥Ã­Ã® Ã¥Ã¤Ã¨Ã­ Ã¤Ã® Ã¤Ã°Ã³Ã£).. Ã€Ã­Ã Ã«Ã¨Ã§Ã¨Ã°Ã Ã©Ã²Ã¥
-//		Ã±Ã«Ã®Ã¦Ã­Ã®Ã±Ã²Ã²Ã  Ã­Ã  Ã¢Ã Ã¸Ã Ã²Ã  Ã¯Ã°Ã®Ã£Ã°Ã Ã¬Ã . Ã…Ã²Ã® Ã¯Ã°Ã¨Ã¬Ã¥Ã°Ã­Ã® Ã¨Ã§Ã¯ÃºÃ«Ã­Ã¥Ã­Ã¨Ã¥
-//		(Ã¨Ã¬Ã Ã©ÃªÃ¨ Ã¯Ã°Ã¥Ã¤Ã¢Ã¨Ã¤, Ã·Ã¥ ASCII ÃªÃ®Ã¤Ã  Ã­Ã  Ã£Ã«Ã Ã¢Ã­Ã  Ã¡Ã³ÃªÃ¢Ã  Ã¥ Ã¯Ã®-Ã¬Ã Ã«ÃªÃ® Ã·Ã¨Ã±Ã«Ã® Ã®Ã²
-//		Ã²Ã®Ã§Ã¨ Ã­Ã  Ã¬Ã Ã«ÃªÃ  Ã¡Ã³ÃªÃ¢Ã ):
-	//
+//		Íàïèøåòå ïðîãðàìà, êîÿòî ïîäêàíâà
+//		ïîòðåáèòåëÿ äà âúâåäå íèç è ïîêàçâà
+//		ìàêñèìàëíî íàðàñòâàùàòà ïîñëåäîâàòåëíîñò
+//		îò ñèìâîëè (íå å çàäúëæèòåëíî òåçè ñèìâîëè
+//		äà ñà íåïîñðåäñòâåíî åäèí äî äðóã).. Àíàëèçèðàéòå
+//		ñëîæíîñòòà íà âàøàòà ïðîãðàìà. Åòî ïðèìåðíî èçïúëíåíèå
+//		(èìàéêè ïðåäâèä, ÷å ASCII êîäà íà ãëàâíà áóêâà å ïî-ìàëêî
+//		÷èñëî îò òîçè íà ìàëêà áóêâà):
+//
 //			Enter a string: Welcome
 //			Welo
 		
-
+//For the string Woabc the answer will be abc as it is the longest sequence of chars in ascending order
+		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Please enter a string");
 		String s = sc.next();
 		
-		//For each char from the string (except the last one) we will do the following: we will choose the biggest char from the ones after it 
-		//Then we will add it to a char array of size [string length - 1][2]
-		char[][] arr = new char[s.length() - 1][2];
-		//O(n * (n + (n - 1) + (n - 2) + (n - 3)...+3+2+1)) = O (n*((n+1)/2 * n) = n * ((n/2 + 1/2)n) = n * (n^2/2 + n/2) = n^3/2 + n^2/2 => O(n^3)
-		for(int i = 0; i < s.length() - 1; i++) {
-			arr[i][0] = s.charAt(i);
-			char biggestChar = '\0';
-			for(int j = i + 1; j < s.length(); j++) {
-				if(s.charAt(j) > biggestChar)biggestChar = s.charAt(j);
-			}
-			arr[i][1] = biggestChar;
-		}
+		//An ArrayList to store the strings 
+		ArrayList <String> strings = new ArrayList <String>();
 		
-		//We will go through that array and find the maximum difference between two chars and save their row
-		int ind = 0;
-		int maxDif = arr[0][1] - arr[0][0];
+		//For each character we will make the longest possible sequence of chars in ascending order
+		//Time complexity: c * (n - 1) + c * (n - 2) ... + c = c * (n - 1 + 1) (n - 1)/ 2 = n * (n - 1 ) = n ^ 2 - n = O(n^2)
+		//For all characters except for the last
+		for(int i = 0; i < s.length() - 1; i++) {
+			String temp = "";
+			//Current character will be the start of the ascending string 
+			temp += s.charAt(i);
+			//All characters bigger than or equal to the last character of temp will be added to temp
+			for(int j = i + 1; j < s.length(); j++) {
+				if(temp.charAt(temp.length() - 1) <= s.charAt(j)){
+					temp += s.charAt(j);
+				}
+			}
+			//Then, temp will be added to the ArrayList of strings 
+			strings.add(temp);
+			
+		}
+		//Now we must find the index of the longest string
+		int ind = -1;
+		int biggestLength = -1;
 		//O(n)
-		for(int i = 1; i < s.length() - 1; i++) {
-			if(arr[i][1] - arr[i][0] > maxDif) {
-				maxDif = arr[i][1] - arr[i][0];
+		for(int i = 0; i < strings.size(); i++) {
+			if(strings.get(i).length() > biggestLength) {
+				biggestLength = strings.get(i).length();
 				ind = i;
 			}
 		}
 		
-
-		//Then, we will create an answer string and go through all elements of the string again
-		//If the current character is bigger than the last from the answer string, we must 
-		//add it to the answer string
-		int lastOccur = lastOccuranceOf(s, arr[ind][1]);
-		String ans = "";
-		//O(n)
-		for(int i = ind ; i <= lastOccur; i++) {
-			if(ans.length() == 0 || s.charAt(i) >= ans.charAt(ans.length() - 1) )ans += s.charAt(i) ;
-		}
-		System.out.println(ans);
+		System.out.println(strings.get(ind));
 	}
-	//Let's call the two characters with a maximum difference ch1 and ch2. We must 
-	//find the last occurance of the character c2 so the result can be as long as possible 
-	public static int lastOccuranceOf(String s, char ch) {
-		//O(n)
-		for(int i = s.length() - 1; i >= 0; i--) {
-			if(s.charAt(i) == ch) {
-				return i;
-			}
-		}
-		return -1;
-	}
-
 }
