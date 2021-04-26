@@ -1,6 +1,7 @@
 package Algorithm_Efficiency;
 
 import java.util.Comparator;
+import java.util.Random;
 
 public class zad1_14 {
 
@@ -12,7 +13,30 @@ public class zad1_14 {
 //
 //		public static <E extends Comparable<E>> void mergeSort(E[] list)
 //		public static <E> void mergeSort(E[] list, Comparator<? super E> comparator)
-
+		Cat[] arr1 = new Cat[10];
+		String[] names = {"Ivan", "Georgi", "Ivana", "Gergana", "Milena", "Preslava", "Tsvetan", "Kotka", "Ivanka", "Pesho"};
+		int[] ages = {1, 12, 4, 7, 3, 8, 6, 11, 10, 18};
+		String[]colors = {"Brown", "Black", "White", "Orange", "Grey", "Black and brown", "Yellow", "Black", "White and brown", "Colorful"};
+		Random r = new Random();
+		for(int i = 0; i < 10; i++) {
+			arr1[i] = new Cat(names[r.nextInt(10)], ages[r.nextInt(10)], colors[r.nextInt(10)]);
+		}
+		mergeSort(arr1);
+		for(int i = 0; i < 10; i++) {
+			arr1[i].print();
+		}
+		
+		NonComparableCat[] arr2 = new NonComparableCat[10];
+		for(int i = 0; i < 10; i++) {
+			arr2[i] = new NonComparableCat(names[r.nextInt(10)], ages[r.nextInt(10)], colors[r.nextInt(10)]);
+		}
+		System.out.println();
+		mergeSort(arr2, new CatComparator());
+		for(int i = 0; i < 10; i++) {
+			arr2[i].print();
+		}
+		
+		
 	}
 	public static <E extends Comparable<E>> void mergeSort(E[] list) {
 		if (list.length > 1) {
