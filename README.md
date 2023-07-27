@@ -1,4 +1,4 @@
-<h1 align="center">Tasks</h1>
+<h1 align="center">Задачи</h1>
 
 ## 11. Задачи
 
